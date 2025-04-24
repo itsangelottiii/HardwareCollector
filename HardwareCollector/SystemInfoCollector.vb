@@ -9,6 +9,9 @@ Public Class SystemInfoCollector
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
     Private Shared Function EnumDisplaySettings(ByVal deviceName As String, ByVal modeNum As Integer, ByRef devMode As DEVMODE) As Boolean
     End Function
+    Private Shared Function GetSystemMetrics(nIndex As Integer) As Integer
+    End Function
+    Private Const SM_REMOTESESSION As Integer = &H1000 ' 4096
 
     <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Auto)>
     Public Structure DEVMODE
@@ -114,6 +117,11 @@ Public Class SystemInfoCollector
                 hardwareElement.SetAttribute("Model", If(obj("Model") IsNot Nothing, obj("Model").ToString(), "N/A"))
                 hardwareElement.SetAttribute("SystemName", If(obj("Name") IsNot Nothing, obj("Name").ToString(), "N/A"))
             Next
+            If IsRemoteSession() Then
+                hardwareElement.SetAttribute("SessionType", "TS/RDP")
+            Else
+                hardwareElement.SetAttribute("SessionType", "Local")
+            End If
             root.AppendChild(hardwareElement)
 
             AppendLog(textBox, "Sammle BIOS-Informationen...")
@@ -291,12 +299,13 @@ Public Class SystemInfoCollector
         rsa.FromXmlString(rsaKeyXml)
         Return rsa
     End Function
-
     Private Shared Sub AppendLog(textBox As TextBox, message As String)
         Dim logMessage As String = DateTime.Now.ToString("HH:mm:ss") & " - " & message & Environment.NewLine
         If textBox IsNot Nothing Then
             textBox.AppendText(logMessage)
         End If
     End Sub
-
+    Public Shared Function IsRemoteSession() As Boolean
+        Return GetSystemMetrics(SM_REMOTESESSION) <> 0
+    End Function
 End Class
