@@ -1,0 +1,40 @@
+name: Build Application
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore NuGet Packages
+        run: dotnet restore
+
+      - name: Build Solution
+        run: dotnet build --configuration Release
+
+      - name: Publish Application
+        run: dotnet publish --configuration Release --self-contained true --runtime win-x64 /p:PublishSingleFile=true --output ./publish
+
+      - name: Get Version from Project File
+        id: get_version
+        run: |
+          $projectFile = Get-ChildItem -Path . -Recurse -Filter *.vbproj | Select-Object -First 1
+          $xml = [xml](Get-Content $projectFile.FullName)
+          $version = $xml.Project.PropertyGroup.FileVersion
+          Write-Output "Application Version: $version"
+          echo "APP_VERSION=$version" >> $env:GITHUB_ENV
+
+      - name: Upload EXE Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HardwareCollector
+          path: "./publish/*.exe"
