@@ -5,13 +5,13 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWindowsForms>True</UseWindowsForms>
     <MyType>WindowsForms</MyType>
-    <ApplicationIcon>dbs.ico</ApplicationIcon>
+    <ApplicationIcon>Icons-Land-Vista-Hardware-Devices-Hardware-Chip.ico</ApplicationIcon>
     <StartupObject>HardwareCollector.My.MyApplication</StartupObject>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="dbs.ico" />
+    <Content Include="Icons-Land-Vista-Hardware-Devices-Hardware-Chip.ico" />
   </ItemGroup>
 
   <ItemGroup>

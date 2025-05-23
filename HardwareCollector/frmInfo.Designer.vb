@@ -37,9 +37,10 @@ Partial Class frmInfo
         ' 
         Label1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Label1.Font = New Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(557, 204)
+        Label1.Location = New Point(300, 96)
+        Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(217, 64)
+        Label1.Size = New Size(117, 30)
         Label1.TabIndex = 0
         Label1.Text = "v."
         Label1.TextAlign = ContentAlignment.MiddleRight
@@ -49,9 +50,10 @@ Partial Class frmInfo
         CheckBox1.AutoCheck = False
         CheckBox1.AutoSize = True
         CheckBox1.ForeColor = Color.Black
-        CheckBox1.Location = New Point(15, 76)
+        CheckBox1.Location = New Point(11, 36)
+        CheckBox1.Margin = New Padding(2, 1, 2, 1)
         CheckBox1.Name = "CheckBox1"
-        CheckBox1.Size = New Size(344, 36)
+        CheckBox1.Size = New Size(174, 19)
         CheckBox1.TabIndex = 1
         CheckBox1.Text = "Terminalserver/RDP-Sitzung"
         CheckBox1.UseVisualStyleBackColor = True
@@ -61,9 +63,11 @@ Partial Class frmInfo
         GroupBox1.Controls.Add(Label2)
         GroupBox1.Controls.Add(CheckBox1)
         GroupBox1.ForeColor = Color.Gray
-        GroupBox1.Location = New Point(12, 12)
+        GroupBox1.Location = New Point(6, 6)
+        GroupBox1.Margin = New Padding(2, 1, 2, 1)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(762, 129)
+        GroupBox1.Padding = New Padding(2, 1, 2, 1)
+        GroupBox1.Size = New Size(410, 60)
         GroupBox1.TabIndex = 2
         GroupBox1.TabStop = False
         GroupBox1.Text = "Ihr Gerät"
@@ -72,9 +76,10 @@ Partial Class frmInfo
         ' 
         Label2.AutoSize = True
         Label2.ForeColor = Color.Black
-        Label2.Location = New Point(15, 41)
+        Label2.Location = New Point(8, 19)
+        Label2.Margin = New Padding(2, 0, 2, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(203, 32)
+        Label2.Size = New Size(104, 15)
         Label2.TabIndex = 2
         Label2.Text = "COMPUTERNAME"
         ' 
@@ -82,42 +87,47 @@ Partial Class frmInfo
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(12, 160)
+        Label3.Location = New Point(6, 75)
+        Label3.Margin = New Padding(2, 0, 2, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(145, 32)
+        Label3.Size = New Size(72, 15)
         Label3.TabIndex = 3
         Label3.Text = "Entwicklung"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(12, 192)
+        Label4.Location = New Point(6, 90)
+        Label4.Margin = New Padding(2, 0, 2, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(207, 32)
+        Label4.Size = New Size(104, 15)
         Label4.TabIndex = 4
         Label4.Text = "Angelos Bamichas"
         ' 
         ' LinkLabel1
         ' 
         LinkLabel1.AutoSize = True
-        LinkLabel1.Location = New Point(12, 224)
+        LinkLabel1.Location = New Point(6, 105)
+        LinkLabel1.Margin = New Padding(2, 0, 2, 0)
         LinkLabel1.Name = "LinkLabel1"
-        LinkLabel1.Size = New Size(89, 32)
+        LinkLabel1.Size = New Size(45, 15)
         LinkLabel1.TabIndex = 5
         LinkLabel1.TabStop = True
         LinkLabel1.Text = "GitHub"
         ' 
         ' frmInfo
         ' 
-        AutoScaleDimensions = New SizeF(13F, 32F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(786, 277)
+        ClientSize = New Size(423, 130)
         Controls.Add(LinkLabel1)
         Controls.Add(Label4)
         Controls.Add(Label3)
         Controls.Add(GroupBox1)
         Controls.Add(Label1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        Margin = New Padding(2, 1, 2, 1)
         MaximizeBox = False
         MinimizeBox = False
         Name = "frmInfo"
